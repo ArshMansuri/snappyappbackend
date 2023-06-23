@@ -6,6 +6,8 @@ const cloudinary = require("cloudinary")
 const cors = require("cors")
 const socketIo = require('socket.io')
 
+const PORT = process.env.PORT || 6020
+
 const app = express();
 const server = http.createServer(app)
 // app.use(cors())
@@ -116,7 +118,7 @@ io.on('connection', (socket)=>{
 })
 
 
-server.listen(process.env.PORT, ()=>{
+server.listen(PORT, ()=>{
     console.log(`App listen on port ${process.env.PORT}`);
 })
 
