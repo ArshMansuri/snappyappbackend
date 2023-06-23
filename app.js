@@ -54,7 +54,6 @@ io.on('connection', (socket)=>{
     socket.on('online-user', ({selfId})=>{
         // onlineUsers.set(to, socket.id)
         appOnlineUser.set(socket.id, selfId)
-        sendPushNotification("63f269d263a2393b6cdac1c7", "63f268ef63a2393b6cdac198", "data.message.text")
     })
 
     socket.on('chat-online-user', async({selfId, to})=>{

@@ -75,7 +75,7 @@ const sendPushNotification = async(me, userId,message) => {
     
             var push_tokens = await fcm_token.find({userId: userId})
             
-            var reg_ids = ["daJKlEY98LKDfUs38Q2Eav:APA91bGg3x24-BHwgbbzON8mlCr9jtldhCeeYiduNhQbuPjy7ZqHz9UjeP2b43iunjQIyZtDrLqatM01bgavmACkk4cUuOg0BFa3PLGt6wExqe7GHhdHRo1xHc00ZcrHUD33GWWiX3fl"];
+            var reg_ids = [];
             push_tokens.forEach(token => {
               reg_ids.push(token.fcm_token)
             })
