@@ -15,6 +15,10 @@ const io = socketIo(server)
 const MsgModel = require('./model/Msg')
 const {sendPushNotification} = require('./config/notification')
 
+app.use(cors({
+    origin: "http://localhost:3000",
+    credentials: true
+}))
 
 const {connectDataBase} = require('./db/conn');
 connectDataBase();
@@ -24,7 +28,7 @@ app.use(cookiParser());
 app.use(express.json({limit: "50mb"}));
 app.use(express.urlencoded({extended: true}));
 
-app.use(cors())
+
 
 //---------------import router ----------
 const user = require('./routes/user');
