@@ -17,8 +17,8 @@ const io = socketIo(server)
 const MsgModel = require('./model/Msg')
 const {sendPushNotification} = require('./config/notification')
 
-app.use(cors({
-    origin: "http://localhost:3000",
+app.use("*", cors({
+    origin: true,
     credentials: true
 }))
 
