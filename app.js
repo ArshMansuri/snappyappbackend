@@ -10,6 +10,8 @@ const PORT = process.env.PORT || 6020
 
 const app = express();
 const server = http.createServer(app)
+app.use(cookiParser());
+
 // app.use(cors())
 const io = socketIo(server)
 const MsgModel = require('./model/Msg')
@@ -22,7 +24,6 @@ app.use(cors({
 
 const {connectDataBase} = require('./db/conn');
 connectDataBase();
-app.use(cookiParser());
 
 //--------------- middleware--------------
 app.use(express.json({limit: "50mb"}));
