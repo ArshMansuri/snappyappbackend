@@ -5,30 +5,24 @@ const cookiParser = require('cookie-parser');
 const cloudinary = require("cloudinary")
 const cors = require("cors")
 const socketIo = require('socket.io')
-
 const PORT = process.env.PORT || 6020
-
 const app = express();
 const server = http.createServer(app)
-app.use(cookiParser());
-
-// app.use(cors())
 const io = socketIo(server)
 const MsgModel = require('./model/Msg')
 const {sendPushNotification} = require('./config/notification')
+const {connectDataBase} = require('./db/conn');
+connectDataBase();
 
+
+//--------------- middleware--------------
+app.use(cookiParser());
+app.use(express.json({limit: "50mb"}));
+app.use(express.urlencoded({extended: true}));
 app.use("*", cors({
     origin: true,
     credentials: true
 }))
-
-const {connectDataBase} = require('./db/conn');
-connectDataBase();
-
-//--------------- middleware--------------
-app.use(express.json({limit: "50mb"}));
-app.use(express.urlencoded({extended: true}));
-
 
 
 //---------------import router ----------

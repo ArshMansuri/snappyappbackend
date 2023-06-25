@@ -97,7 +97,11 @@ exports.login = async (req, res) =>{
 
         const token = await user.createToken();
 
-        res.cookie("token", token, {httpOnly: true})
+        res.cookie("token", token, {
+            sameSite: 'strict',
+            httpOnly: true,
+            expires: new Date(new Date().getTime() + 100 * 1000)
+        })
 
         return res.status(200).json({
             success: true,
