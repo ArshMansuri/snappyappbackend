@@ -54,7 +54,9 @@ exports.signin = async (req, res) =>{
 
         const token = await user.createToken();
 
-        return res.status(201).cookie("token", token, {httpOnly: false})
+        res.cookie("token", token, {httpOnly: false})
+
+        return res.status(201)
         .json({
             success: true,
             user,
@@ -95,7 +97,9 @@ exports.login = async (req, res) =>{
 
         const token = await user.createToken();
 
-        return res.status(200).cookie("token", token, {httpOnly: false}).json({
+        res.cookie("token", token, {httpOnly: true})
+
+        return res.status(200).json({
             success: true,
             user,
             token
