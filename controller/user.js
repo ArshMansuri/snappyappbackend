@@ -98,7 +98,7 @@ exports.login = async (req, res) =>{
         const token = await user.createToken();
 
         res.cookie("token", token, {
-            sameSite: 'StrictMode',
+            sameSite: 'strict',
             httpOnly: true,
             expires: new Date(new Date().getTime()+5*60*1000),
             // secure: true
