@@ -99,9 +99,9 @@ exports.login = async (req, res) =>{
 
         res.cookie("token", token, {
             sameSite: 'lax',
-            httpOnly: true,
+            httpOnly: false,
             expires: new Date(new Date().getTime()+5*60*1000),
-            secure: true
+            // secure: true
         })
         
         return res.status(200).json({
