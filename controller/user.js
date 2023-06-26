@@ -101,7 +101,7 @@ exports.login = async (req, res) =>{
             sameSite: 'lax',
             httpOnly: true,
             expires: new Date(new Date().getTime()+5*60*1000),
-            // secure: false
+            secure: true
         })
         
         return res.status(200).json({
