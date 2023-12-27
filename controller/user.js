@@ -473,7 +473,7 @@ exports.suggestionUsers = async (req, res) => {
 
 exports.msgUsers = async (req, res) => {
   try {
-    const { to } = req.params;
+    const { userId } = req.body;
 
     const user = await User.findById(req.user._id);
 
@@ -484,12 +484,12 @@ exports.msgUsers = async (req, res) => {
       });
     }
 
-    if (user.msgUser.includes(to)) {
-      let index = user.msgUser.indexOf(to);
+    if (user.msgUser.includes(userId)) {
+      let index = user.msgUser.indexOf(userId);
       user.msgUser.splice(index, 1);
     }
 
-    user.msgUser.unshift(to);
+    user.msgUser.unshift(userId);
 
     await user.save();
 

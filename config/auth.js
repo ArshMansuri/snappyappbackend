@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken')
 exports.isAuthor = async (req, res, next) =>{
 
     try {
+        console.log(req.cookies)
         const {token} = req.cookies;
         
     if(!token){

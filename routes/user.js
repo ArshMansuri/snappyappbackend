@@ -32,6 +32,6 @@ router.route('/search/:key').get(isAuthor, searchUser)
 
 router.route('/me/suggestion').get(isAuthor, suggestionUsers)
 
-router.route('/message/msguser/:to').post(isAuthor, msgUsers)
+router.route('/message/msguser').post(isAuthor, msgUsers)
 
 module.exports = router
