@@ -475,7 +475,7 @@ exports.msgUsers = async (req, res) => {
   try {
     const { userId } = req.body;
 
-    if(!userId){
+    if(userId === null){
       return res.status(400).json({
         success: false,
         message: "USer Id not have",
